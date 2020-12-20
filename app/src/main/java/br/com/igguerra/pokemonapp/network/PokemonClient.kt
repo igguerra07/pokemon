@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object PokemonClient {
-    private fun providesRetrofitClient(): Retrofit {
+    private fun providesClient(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -13,7 +13,7 @@ object PokemonClient {
     }
 
     fun providesApi(): PokemonApi {
-        val client = providesRetrofitClient()
+        val client = providesClient()
         return client.create(PokemonApi::class.java)
     }
 }
